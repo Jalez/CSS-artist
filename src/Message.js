@@ -85,13 +85,13 @@ window.addEventListener('message', (e) => {
 			// use the element with the id of passIndicator and set the innerHTML to 'JAH WOLL'
 			document.getElementById('passIndicator').innerHTML = 'JAH WOLL!';
 		}
-		console.log('width times height', width * height);
+
 		// Round the percentage to 2 decimal places
 		percentage = percentage.toFixed(2);
 		//find element with id accuracy and set the innerHTML to the percentage
 		document.getElementById('accuracy').innerHTML = `${percentage}`;
 		// Log the percentage to the console
-		console.log(`Percentage of different pixels: ${percentage}%`);
+
 		// Create a new canvas element
 		const diffCanvas = document.createElement('canvas');
 		// Set the width and height of the canvas
@@ -106,9 +106,7 @@ window.addEventListener('message', (e) => {
 		// Draw the ImageData object to the canvas
 		diffCtx?.putImageData(diffImgData, 0, 0);
 		// put the canvas in the DOM
-		document.body.appendChild(diffCanvas);
-		// Append the image to the document
-		// document.body.appendChild(diffImg);
-		// document.body.appendChild(canvas);
+		// get the element with the id of diff and append the canvas to it
+		document.getElementById('diff').appendChild(diffCanvas);
 	};
 });

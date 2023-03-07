@@ -1,0 +1,16 @@
+.navbar {
+  /* backdrop-filter: invert(100%); */
+  height: fit-content;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+
+}
+
+button {
+  color: black;
+
+}
+
+button:hover {
+  backdrop-filter: blur(2px);
+  transform: backdrop-filter 1s;
+}

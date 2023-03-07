@@ -1,24 +1,25 @@
 /* If the users theme is light: */
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   .codeEditor {
     background: #d3caca;
     color: #2b2b2e;
 
   }
-}
+} */
 
 /* If the users theme is dark */
 
-@media (prefers-color-scheme: dark) {
-  .codeEditor {
-    background: #2b2b2e;
-    color: #d3caca;
-  }
+/* @media (prefers-color-scheme: dark) {
+} */
 
-  #title {
-    margin: 0px;
-    padding: 5px;
-    border: 2px solid #28282b;
-  }
+
+.codeEditor {
+  background: #2b2b2e;
+  color: #d3caca;
 }
 
+#title {
+  margin: 0px;
+  padding: 5px;
+  border: 2px solid #28282b;
+}

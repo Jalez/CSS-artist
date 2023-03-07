@@ -45,6 +45,7 @@ export default function CodeEditor({
 				style={{
 					// add shadow to the text
 					textShadow: '2px 5px 1px #000',
+					marginTop: 10,
 				}}
 				id='title'>
 				{title}
