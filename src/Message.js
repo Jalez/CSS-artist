@@ -3,6 +3,9 @@ import pixelmatch from 'pixelmatch';
 import { Buffer } from 'buffer';
 import confetti from 'canvas-confetti';
 
+// import my redux store
+import store from './store/store';
+
 const getPixelData = (img = new Image()) => {
 	return new Promise((resolve, reject) => {
 		console.log('getPixelData');
@@ -83,6 +86,7 @@ window.addEventListener('message', (e) => {
 			});
 
 			// use the element with the id of passIndicator and set the innerHTML to 'JAH WOLL'
+			store.dispatch();
 			document.getElementById('passIndicator').innerHTML = 'JAH WOLL!';
 		}
 

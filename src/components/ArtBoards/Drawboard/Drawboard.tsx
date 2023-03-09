@@ -1,6 +1,8 @@
 /** @format */
 
 import { useRef, useState } from 'react';
+import { InfoBoard } from '../../InfoBoard/InfoBoard';
+import { InfoText } from '../../InfoBoard/InfoText';
 import { Frame } from '../Frame';
 import { Model } from '../ModelBoard/Model/Model';
 import './Drawboard.css';
@@ -28,21 +30,33 @@ export const Drawboard = ({ htmlCode, cssCode }: DrawboardProps) => {
 	};
 	return (
 		<div className='board'>
-			<div className='slidecontainer'>
-				<input
-					type='range'
-					min='1'
-					max='100'
-					value={sliderValue}
-					className='slider'
-					id='myRange'
-					onInput={dragSlider}
-				/>
-			</div>
+			<InfoBoard>
+				<InfoText reduxState={'test'}>Passed</InfoText>
+				<InfoText reduxState={'test'}>Accuracy</InfoText>
+			</InfoBoard>
 
-			<Model />
-			<div id='img1' style={imgStyle} ref={boardRef}>
-				<Frame newCss={cssCode} newHtml={htmlCode} />
+			<div
+				className='img-container'
+				style={{
+					position: 'relative',
+					height: '300px',
+				}}>
+				<div className='slidecontainer'>
+					<input
+						type='range'
+						min='1'
+						max='100'
+						value={sliderValue}
+						className='slider'
+						id='myRange'
+						onInput={dragSlider}
+					/>
+				</div>
+
+				<Model />
+				<div id='img1' style={imgStyle} ref={boardRef}>
+					<Frame newCss={cssCode} newHtml={htmlCode} />
+				</div>
 			</div>
 		</div>
 	);

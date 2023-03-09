@@ -13,6 +13,7 @@ import { Editors } from './components/Editors/Editors';
 import { ArtBoards } from './components/ArtBoards/ArtBoards';
 import { Footer } from './components/Footer/Footer';
 import { Title } from './components/Title/Title';
+import { InfoBoard } from './components/InfoBoard/InfoBoard';
 
 const startingCss = `
 body {
@@ -49,7 +50,6 @@ function App() {
 			<Navbar />
 			<div className='App'>
 				<CSSWordCloud />
-
 				<ArtBoards cssCode={cssCode} htmlCode={htmlCode} />
 			</div>
 			<Editors

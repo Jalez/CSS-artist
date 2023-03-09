@@ -15,6 +15,9 @@ const currentLevelSlice = createSlice({
 	initialState,
 	reducers: {
 		setCurrentLevel(state, action: PayloadAction<number>) {
+			// Get the whole store state
+			console.log('state', state);
+
 			state.currentLevel = action.payload;
 		},
 	},

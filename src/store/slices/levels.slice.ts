@@ -34,6 +34,9 @@ const levelsSlice = createSlice({
 				payload: number;
 			}
 		) {
+			// Get the currentLevel from the stores state
+			console.log('state', state);
+
 			const level = state.levels.find((level) => level.id === action.payload);
 			if (level) level.completed = true;
 		},
