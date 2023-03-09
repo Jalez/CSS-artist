@@ -31,18 +31,19 @@ export const InfoBoard = ({ children }: InfoBoardProps) => {
 				{/* map through children */}
 				{children
 					? children.map((child: any, index: number) => (
-							<div
-								style={{
-									flex: 1,
-									display: 'flex',
-									flexDirection: 'row',
-									justifyContent: 'center',
-									alignItems: 'center',
-									border: '0.1em solid #444',
-								}}>
-								{child}
-							</div>
-					  ))
+						<div
+							key={index}
+							style={{
+								flex: 1,
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'center',
+								alignItems: 'center',
+								border: '0.1em solid #444',
+							}}>
+							{child}
+						</div>
+					))
 					: null}
 			</div>
 		</div>

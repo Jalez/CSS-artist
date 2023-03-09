@@ -91,6 +91,7 @@ export default function NavMenu({
 				{menuItems.map((item, index) => {
 					return (
 						<MenuItem
+							key={index}
 							style={{
 								fontFamily: 'Kontakt',
 								fontSize: 30,

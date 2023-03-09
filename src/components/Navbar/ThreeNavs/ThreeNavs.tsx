@@ -2,6 +2,7 @@
 
 import { useDispatch } from 'react-redux/es/hooks/useDispatch';
 import { setCurrentLevel } from '../../../store/slices/currentLevel.slice';
+import HelpModal from '../../HelpModal/HelpModal';
 import { NavButton } from '../NavButton';
 import NavMenu from '../NavMenu';
 
@@ -46,6 +47,7 @@ export const ThreeNavs = () => {
 
 	return (
 		<div id='three-navs'>
+			<HelpModal />
 			<NavButton clickHandler={showHelp}>Help</NavButton>
 			<NavButton clickHandler={beginEvaluation}>Evaluate</NavButton>
 			<NavMenu

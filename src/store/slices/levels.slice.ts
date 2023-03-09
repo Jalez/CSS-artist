@@ -2,30 +2,44 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
+// Get from assets
+import Easy2 from '../../assets/Easy2.png';
+import Medium2 from '../../assets/Medium2.png';
+import Hard3 from '../../assets/Hard3.png';
+
 const levelsSlice = createSlice({
 	name: 'levels',
-	initialState: {
-		levels: [
-			{
-				id: 1,
-				name: 'Level 1',
-				image: 'https://i.imgur.com/9J4ZQ9M.png',
-				completed: false,
-			},
-			{
-				id: 2,
-				name: 'Level 2',
-				image: 'https://i.imgur.com/9J4ZQ9M.png',
-				completed: false,
-			},
-			{
-				id: 3,
-				name: 'Level 3',
-				image: 'https://i.imgur.com/9J4ZQ9M.png',
-				completed: false,
-			},
-		],
-	},
+	initialState: [
+		{
+			id: 1,
+			name: 'Level 1',
+			completed: false,
+			primaryColor: '#62374E',
+			secondaryColor: '#FDC57B',
+			image: Easy2,
+			difficulty: 'easy',
+		},
+		{
+			id: 2,
+			name: 'Level 2',
+			completed: false,
+			primaryColor: '#D25B70',
+			secondaryColor: '#F2E09F',
+			image: Medium2,
+			difficulty: 'medium',
+
+		},
+		{
+			id: 3,
+			name: 'Level 3',
+			completed: false,
+			primaryColor: '#F5D6B4',
+			secondaryColor: '#D86F45',
+			image: Hard3,
+			difficulty: 'hard',
+		},
+	],
+
 	reducers: {
 		completeLevel(
 			state,
@@ -37,7 +51,7 @@ const levelsSlice = createSlice({
 			// Get the currentLevel from the stores state
 			console.log('state', state);
 
-			const level = state.levels.find((level) => level.id === action.payload);
+			const level = state.find((level) => level.id === action.payload);
 			if (level) level.completed = true;
 		},
 	},

@@ -14,7 +14,12 @@ export const ModelBoard = () => {
 	return (
 		<div id='model-board'>
 			<InfoBoard>
-				<InfoColor />
+				<InfoColor
+					significance='primaryColor'
+				/>
+				<InfoColor
+					significance='secondaryColor'
+				/>
 				<FormControlLabel
 					control={
 						<Switch
