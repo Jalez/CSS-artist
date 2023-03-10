@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Artist</title>
+  <style>
+    body {
+      /* margin: 0px; */
+      padding: 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+    }
+
+    /* Add Bungee spice as a font 
+     */
+    @font-face {
+      font-family: "Kontakt";
+      src: url("./fonts/Kontakt.ttf");
+    }
+
+    /* Add Cyberpunk  as font*/
+    @font-face {
+      font-family: "Cyberpunk";
+      src: url("./fonts/Cyberpunk.ttf");
+    }
+
+    body {
+      font-family: "Kontakt";
+
+    }
+
+    h1,
+    h2 {
+      text-shadow: 5px 0px 0px #000;
+      color: #fff;
+    }
+
+    /* button {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    } */
+  </style>
+</head>
+
+<body>
+
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  <script type="module" src="./src/Message.js"></script>
+</body>
+
+</html>
