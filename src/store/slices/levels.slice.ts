@@ -13,7 +13,8 @@ const levelsSlice = createSlice({
 		{
 			id: 1,
 			name: 'Level 1',
-			completed: false,
+			completed: 'no',
+			accuracy: 0,
 			primaryColor: '#62374E',
 			secondaryColor: '#FDC57B',
 			image: Easy2,
@@ -22,17 +23,18 @@ const levelsSlice = createSlice({
 		{
 			id: 2,
 			name: 'Level 2',
-			completed: false,
+			completed: 'no',
+			accuracy: 0,
 			primaryColor: '#D25B70',
 			secondaryColor: '#F2E09F',
 			image: Medium2,
 			difficulty: 'medium',
-
 		},
 		{
 			id: 3,
 			name: 'Level 3',
-			completed: false,
+			completed: 'no',
+			accuracy: 0,
 			primaryColor: '#F5D6B4',
 			secondaryColor: '#D86F45',
 			image: Hard3,
@@ -52,7 +54,7 @@ const levelsSlice = createSlice({
 			console.log('state', state);
 
 			const level = state.find((level) => level.id === action.payload);
-			if (level) level.completed = true;
+			if (level) level.completed = 'yes';
 		},
 	},
 });

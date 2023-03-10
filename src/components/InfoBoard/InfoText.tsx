@@ -10,14 +10,20 @@ interface NavTextProps {
 
 export const InfoText = ({ children, reduxState }: NavTextProps) => {
 	// get redux state
-	// const state = useSelector((state: any) => state[reduxState]);
+	const { currentLevel } = useSelector((state: any) => state.currentLevel);
+	const detail = useSelector(
+		(state: any) => state.levels[currentLevel - 1][reduxState]
+	);
+
+	console.log('currentLevel: ', currentLevel);
+	console.log(detail);
 	return (
 		<>
 			<p
 				style={{
 					textAlign: 'center',
 				}}>
-				{children}
+				{children} : {detail}
 			</p>
 		</>
 	);

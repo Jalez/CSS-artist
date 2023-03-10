@@ -4,18 +4,16 @@ import { Popover } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-export const InfoColor = (
-	{
-		significance = "primaryColor",
-	}
-) => {
+export const InfoColor = ({ significance = 'primaryColor' }) => {
 	const [popUp, setPopUp] = useState(false);
 	const colorRef = useRef<HTMLParagraphElement>(null);
 	// Get the color code from the state
 
 	// get the current level from the store state
 	const { currentLevel } = useSelector((state: any) => state.currentLevel);
-	const levelDetails = useSelector((state: any) => state.levels[currentLevel - 1]);
+	const levelDetails = useSelector(
+		(state: any) => state.levels[currentLevel - 1]
+	);
 	useEffect(() => {
 		if (popUp) {
 			setTimeout(() => {
@@ -24,18 +22,14 @@ export const InfoColor = (
 		}
 	}, [popUp]);
 
-
-
-
-
-	let colorCode = "yellow";
+	let colorCode = 'yellow';
 	colorCode = levelDetails[significance];
 
 	const clickHandler = (
 		event: React.MouseEvent<HTMLParagraphElement, MouseEvent>
 	) => {
 		// When the p is clicked, copy the color code to the clipboard
-		navigator.clipboard.writeText('#FF0000');
+		navigator.clipboard.writeText(colorCode);
 		// alert the user that the color code has been copied
 		// alert('Copied to clipboard');
 		setPopUp(true);
@@ -87,9 +81,7 @@ export const InfoColor = (
 				<span
 					style={{
 						userSelect: 'none',
-					}}
-				>
-
+					}}>
 					{colorCode}
 				</span>
 			</div>

@@ -31,10 +31,18 @@ export const Drawboard = ({ htmlCode, cssCode }: DrawboardProps) => {
 	return (
 		<div className='board'>
 			<InfoBoard>
-				<InfoText reduxState={'test'}>Passed</InfoText>
-				<InfoText reduxState={'test'}>Accuracy</InfoText>
+				<InfoText reduxState={'completed'}>Completed</InfoText>
+				<InfoText reduxState={'accuracy'}>Accuracy</InfoText>
 			</InfoBoard>
+			{/* 
+box
+font size
+font family
+background color
+height
+width 
 
+*/}
 			<div
 				className='img-container'
 				style={{

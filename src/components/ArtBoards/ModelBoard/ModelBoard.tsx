@@ -14,12 +14,14 @@ export const ModelBoard = () => {
 	return (
 		<div id='model-board'>
 			<InfoBoard>
-				<InfoColor
-					significance='primaryColor'
-				/>
-				<InfoColor
-					significance='secondaryColor'
-				/>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+					}}>
+					<InfoColor significance='primaryColor' />
+					<InfoColor significance='secondaryColor' />
+				</div>
 				<FormControlLabel
 					control={
 						<Switch
