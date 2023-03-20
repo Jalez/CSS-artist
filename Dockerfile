@@ -16,7 +16,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 RUN rm -fr ./drawBoard \
-  && sed -i 's#http://localhost:3500#https://tie-lukioplus.rd.tuni.fi/draw-board#' src/components/ArtBoards/Frame.tsx \
+  && sed -i 's#http://localhost:3500#https://tie-lukioplus.rd.tuni.fi/drawboard#' src/components/ArtBoards/Frame.tsx \
   && npm run build
 
 EXPOSE 3000
