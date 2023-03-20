@@ -1,7 +1,8 @@
 <form enctype="multipart/form-data" method="post" id="regex">
   {% csrf_token %}
 
-  <iframe name="regex" src="http://localhost:5173/" width="100%" height="100%"></iframe>
+  <iframe name="regex" src="http://localhost:5173/" width="100%" height="100%"
+    allow="clipboard-read; clipboard-write"></iframe>
   <input type="hidden" name="points" id="points" value="0" />
   <input type="hidden" name="maxPoints" id="maxPoints" value="15" />
   <button id="submit" class="btn btn-primary">Submit to Plussa</button>

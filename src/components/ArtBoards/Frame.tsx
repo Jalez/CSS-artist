@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateLevel } from '../../store/slices/levels.slice';
 import pixelmatch from 'pixelmatch';
 import { Buffer } from 'buffer';
+import { updatePointsThunk } from '../../store/actions/score.actions';
+import { useAppDispatch } from '../../store/hooks/hooks';
 // import my redux store
 
 // prop types
@@ -16,14 +18,13 @@ interface FrameProps {
 export const Frame = ({ newHtml, newCss }: FrameProps) => {
 	// create a ref for the iframe
 	const iframeRef = useRef<HTMLIFrameElement>(null);
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const { currentLevel } = useSelector((state: any) => state.currentLevel);
 	const level = useSelector((state: any) => state.levels[currentLevel - 1]);
 
 	useEffect(() => {
 		const resendDataAfterMount = (event: MessageEvent) => {
 			if (event.data === 'mounted') {
-				console.log('mounted');
 				// Send the new html and css to the iframe
 				iframeRef.current?.contentWindow?.postMessage(
 					{
@@ -68,7 +69,6 @@ export const Frame = ({ newHtml, newCss }: FrameProps) => {
 			// set the src of the image to the data url
 			// when the image loads, draw it to the canvas
 			const curImgUrl = level?.image;
-			console.log('curImgUrl', curImgUrl);
 			const img1 = new Image();
 
 			img1.onload = imageLoaded;
@@ -86,10 +86,7 @@ export const Frame = ({ newHtml, newCss }: FrameProps) => {
 			const allImagesLoaded = async () => {
 				// create a canvas element
 				const canvas = document.createElement('canvas');
-				console.log('Getting here in levels.slice.ts');
 				// set the width and height of the canvas
-				console.log('WIDTH img1', img1.width);
-				console.log('WIDTH img2', img2.width);
 				canvas.width = img2.width;
 				canvas.height = img2.height;
 				// get the context of the canvas
@@ -97,19 +94,15 @@ export const Frame = ({ newHtml, newCss }: FrameProps) => {
 				// draw the image to the canvas
 				ctx?.drawImage(img2, 0, 0);
 				// Add the canvas to the DOM
-				console.log('Getting here in levels.slice.ts 2');
-				// Set the curImgUrl to the image
-
-				// when the image loads, draw it to the canvas
-
 				// set the src of the image to the data url
 
 				const img1Data = (await getPixelData(img1)) as ImageData;
-				console.log('img1Data', img1Data);
 				const img2Data = (await getPixelData(img2)) as ImageData;
 
 				// Create a diff image with the same dimensions as img1
 				const diff = Buffer.alloc(img2Data.data.length as number) as Buffer;
+				console.log(typeof diff);
+				console.log('diff: ', diff);
 				// Get the width and height of the images
 				// make sure both images have the same dimensions
 
@@ -146,10 +139,11 @@ export const Frame = ({ newHtml, newCss }: FrameProps) => {
 				dispatch(
 					updateLevel({
 						id: 1,
-						diff: diff as Buffer,
+						diff: diff.toString('base64'),
 						accuracy: returnValue as number,
 					})
 				);
+				dispatch(updatePointsThunk(returnValue as number));
 			};
 
 			// create an image element

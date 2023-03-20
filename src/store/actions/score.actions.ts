@@ -40,8 +40,8 @@ export const updatePointsThunk =
 			// Add new points to score
 			const updatedPoints = newScore + points;
 			// Dispatch the thunk action
-			await dispatch(updatePoints(updatedPoints));
-			await dispatch(sendScoreToParentFrame());
+			dispatch(updatePoints(updatedPoints));
+			dispatch(sendScoreToParentFrame());
 		}
 	};
 
