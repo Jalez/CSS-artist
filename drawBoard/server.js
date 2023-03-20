@@ -3,7 +3,7 @@ const http = require('http');
 const serveStatic = require('serve-static');
 
 // Serve up build folder
-const serve = serveStatic('build', { index: ['index.html', 'index.htm'] });
+const serve = serveStatic('dist', { index: ['index.html', 'index.htm'] });
 
 // Create server
 const server = http.createServer(function onRequest (req, res) {
