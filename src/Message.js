@@ -8,8 +8,6 @@ import store from './store/store';
 
 const getPixelData = (img = new Image()) => {
 	return new Promise((resolve, reject) => {
-		console.log('getPixelData');
-
 		// Create a canvas element
 		const canvas = document.createElement('canvas');
 		// Set the width and height of the canvas to the width and height of the image
@@ -30,7 +28,6 @@ const getPixelData = (img = new Image()) => {
 };
 
 window.addEventListener('message', (e) => {
-	console.log('Message received: ', e.data);
 	// take the data url from the message
 	const dataUrl = e.data;
 	// create an image element
@@ -53,8 +50,6 @@ window.addEventListener('message', (e) => {
 
 		const img1Data = await getPixelData(img1);
 		const img2Data = await getPixelData(img);
-		console.log('img1Data', img2Data);
-		console.log('img2Data', img2Data);
 
 		// Create a diff image with the same dimensions as img1
 		const diff = new Buffer.alloc(img2Data.data.length);
@@ -73,7 +68,6 @@ window.addEventListener('message', (e) => {
 				threshold: 0.1,
 			}
 		);
-		console.log('returnValue', returnValue);
 		// Get the percentage of pixels that are different
 		let percentage = 100 - (returnValue / (width * height)) * 100;
 
@@ -86,7 +80,6 @@ window.addEventListener('message', (e) => {
 			});
 
 			// use the element with the id of passIndicator and set the innerHTML to 'JAH WOLL'
-			store.dispatch();
 			document.getElementById('passIndicator').innerHTML = 'JAH WOLL!';
 		}
 
