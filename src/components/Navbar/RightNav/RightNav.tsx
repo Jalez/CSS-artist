@@ -14,10 +14,10 @@ export const RightNav = () => {
 
 	return (
 		<div id='right-nav'>
-			<InfoText>
+			{/* <InfoText>
 				Level passed:
 				{passedLevel}
-			</InfoText>
+			</InfoText> */}
 			<NavButton clickHandler={levelChanger}>Levels</NavButton>
 		</div>
 	);
