@@ -5,13 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 3500",
+    "start": "node server.js",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "finalhandler": "^1.2.0",
     "html2canvas": "^1.4.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "serve-static": "^1.15.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
