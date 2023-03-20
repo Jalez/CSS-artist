@@ -23,7 +23,7 @@ export const LeftNav = () => {
 		<div id='left-nav'>
 			<NavButton clickHandler={showHelp}>Help</NavButton>
 			<NavButton clickHandler={beginEvaluation}>Evaluate</NavButton>
-			<InfoText>Accuracy {accuracy}</InfoText>
+			{/* <InfoText>Accuracy {accuracy}</InfoText> */}
 		</div>
 	);
 };
