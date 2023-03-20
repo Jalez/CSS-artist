@@ -125,10 +125,8 @@ export const Frame = ({ newHtml, newCss }: FrameProps) => {
 						threshold: 0.1,
 					}
 				);
-				console.log('returnValue', returnValue);
 				// Get the percentage of pixels that are different
 				const percentage = (returnValue / (width * height)) * 100;
-				console.log('percentage', percentage);
 
 				// Create a new canvas element
 				const diffCanvas = document.createElement('canvas');
