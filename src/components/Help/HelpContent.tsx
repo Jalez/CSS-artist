@@ -3,6 +3,7 @@
 import { Tab, Tabs, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const style = {
 	position: 'absolute' as 'absolute',
@@ -52,6 +53,12 @@ function a11yProps(index: number) {
 
 export const HelpContent = () => {
 	const [value, setValue] = useState(0);
+	// get the description from the store state
+	const { currentLevel } = useSelector((state: any) => state.currentLevel);
+	const levelDetails = useSelector(
+		(state: any) => state.levels[currentLevel - 1]
+	);
+	const { description } = levelDetails.help;
 
 	const titlesAndDescriptions = [
 		{
@@ -61,7 +68,7 @@ export const HelpContent = () => {
 		},
 		{
 			title: 'This level',
-			description: 'This is the diff',
+			description: description,
 		},
 	];
 

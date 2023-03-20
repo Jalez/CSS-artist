@@ -17,13 +17,13 @@ export default function Help() {
 		<>
 			<NavButton clickHandler={handleOpen}>Help</NavButton>
 
-			<Modal
+			{/* <Modal
 				open={open}
 				onClose={handleClose}
 				aria-labelledby='help-modal-title'
 				aria-describedby='help-modal-description'>
 				<HelpContent />
-			</Modal>
+			</Modal> */}
 		</>
 	);
 }
