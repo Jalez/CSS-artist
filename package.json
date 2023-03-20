@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --open",
     "start": "node server.cjs",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --base '/css-artist1'",
     "preview": "vite preview"
   },
   "dependencies": {
