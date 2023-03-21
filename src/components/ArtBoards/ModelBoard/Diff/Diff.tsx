@@ -34,7 +34,12 @@ export const Diff = () => {
 
 	return (
 		<div id='diff'>
-			<p>This is the diff</p>
+			<p
+				style={{
+					textAlign: 'center',
+				}}>
+				No diff image created for this level yet. Click evaluate to generate.
+			</p>
 		</div>
 	);
 };

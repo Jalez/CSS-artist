@@ -105,7 +105,7 @@ export const Frame = ({ newHtml, newCss }: FrameProps) => {
 				);
 				dispatch(
 					updateLevel({
-						id: 1,
+						id: currentLevel,
 						diff: diff.toString('base64'),
 						accuracy: returnValue as number,
 					})
@@ -121,7 +121,7 @@ export const Frame = ({ newHtml, newCss }: FrameProps) => {
 		return () => {
 			window.removeEventListener('message', handleDataFromIframe);
 		};
-	}, []);
+	}, [currentLevel]);
 
 	useEffect(() => {
 		// wait for the iframe to load

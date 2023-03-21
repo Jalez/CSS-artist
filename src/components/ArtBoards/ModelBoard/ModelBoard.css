@@ -6,8 +6,10 @@
   height: fit-content;
   /* height: 300px; */
   width: 400px;
-  box-shadow: 5px 5px 2px #000;
-  position: absolute;
+  margin: 5px;
+
+  /* box-shadow: 5px 5px 2px #000; */
+  /* position: absolute;
   right: 10%;
-  top: 25%;
+  top: 25%; */
 }

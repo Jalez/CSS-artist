@@ -5,11 +5,11 @@ export const Footer = () => {
 		<footer
 			style={{
 				margin: 0,
-				// fontSize: 20,
+				fontSize: 10,
 				// center the text
 				textAlign: 'center',
 				color: '#ccc',
-				backgroundColor: '#444',
+				backgroundColor: '#333',
 				padding: 10,
 				// give a shadow to the text
 				textShadow: '2px 1px 1px #000',

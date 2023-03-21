@@ -2,7 +2,6 @@
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-
 interface CurrentLevelState {
 	currentLevel: number;
 }
@@ -17,7 +16,6 @@ const currentLevelSlice = createSlice({
 	reducers: {
 		setCurrentLevel(state, action: PayloadAction<number>) {
 			// Get the whole store state
-			console.log('state', state);
 
 			state.currentLevel = action.payload;
 		},

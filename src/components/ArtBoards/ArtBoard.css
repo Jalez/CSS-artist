@@ -25,6 +25,11 @@
   overflow: hidden;
 }
 
+#artBoard {
+  display: flex;
+  flex-direction: row;
+
+}
 
 .slidecontainer {
   position: absolute;

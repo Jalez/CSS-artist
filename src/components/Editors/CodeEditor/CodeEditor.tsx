@@ -4,7 +4,9 @@ import { html } from '@codemirror/lang-html';
 import { oneDark } from '@codemirror/theme-one-dark';
 import CodeMirror from '@uiw/react-codemirror';
 import { useEffect, useState } from 'react';
-import { materialLight, materialDark } from '@uiw/codemirror-theme-material';
+// import { materialLight, materialDark } from '@uiw/codemirror-theme-material';
+import { vscodeDark, vscodeDarkInit } from '@uiw/codemirror-theme-vscode';
+
 import './CodeEditor.css';
 import { indentWithTab } from '@codemirror/commands';
 
@@ -30,10 +32,10 @@ export default function CodeEditor({
 	}, [code]);
 
 	// Get the users system theme
-	const editorTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-		? materialDark
-		: materialLight;
-
+	// const editorTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+	// 	? materialDark
+	// 	: materialLight;
+	const editorTheme = vscodeDark;
 	return (
 		<div
 			className='codeEditor'
@@ -46,6 +48,8 @@ export default function CodeEditor({
 					// add shadow to the text
 					textShadow: '2px 5px 1px #000',
 					marginTop: 10,
+					// Dont allow selection of the text
+					userSelect: 'none',
 				}}
 				id='title'>
 				{title}
@@ -57,7 +61,7 @@ export default function CodeEditor({
 				theme={editorTheme}
 				value={code}
 				placeholder={`Write your ${title} here...`}
-				minHeight='300px'
+				maxHeight='200px'
 				extensions={[lang]}
 				onChange={(value, viewUpdate) => {
 					setCode(value);
