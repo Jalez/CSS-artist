@@ -63,7 +63,7 @@ width
 
 				<Model />
 				<div id='img1' style={imgStyle} ref={boardRef}>
-					{/* <Frame newCss={cssCode} newHtml={htmlCode} /> */}
+					<Frame newCss={cssCode} newHtml={htmlCode} />
 				</div>
 			</div>
 		</div>
