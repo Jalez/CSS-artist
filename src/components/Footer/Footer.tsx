@@ -10,7 +10,7 @@ export const Footer = () => {
 				textAlign: 'center',
 				color: '#ccc',
 				backgroundColor: '#333',
-				padding: 10,
+				padding: 5,
 				// give a shadow to the text
 				textShadow: '2px 1px 1px #000',
 			}}>
