@@ -6,7 +6,10 @@ import HelpModal from '../../Help/Help';
 import { NavButton } from '../NavButton';
 import NavMenu from '../NavMenu';
 
+import { sendScoreToParentFrame } from '../../../store/actions/score.actions';
+
 import './ThreeNavs.css';
+import { useAppDispatch } from '../../../store/hooks/hooks';
 
 const levelsAndIds = [
 	{
@@ -24,7 +27,7 @@ const levelsAndIds = [
 ];
 
 export const ThreeNavs = () => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const beginEvaluation = () => {
 		// send a message to the iframe
 		const iframe = document.querySelector('iframe');
@@ -32,6 +35,7 @@ export const ThreeNavs = () => {
 		if (iframe) {
 			iframe.contentWindow?.postMessage('create image', '*');
 		}
+		dispatch(sendScoreToParentFrame());
 	};
 
 	const levelChanger = (pickedLevel: any) => {
@@ -45,7 +49,6 @@ export const ThreeNavs = () => {
 	return (
 		<div id='three-navs'>
 			<HelpModal />
-
 			<NavButton clickHandler={beginEvaluation}>Evaluate</NavButton>
 			<NavMenu
 				clickHandler={levelChanger}

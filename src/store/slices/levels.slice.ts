@@ -24,6 +24,7 @@ interface Level {
 	image: string;
 	diff: string;
 	difficulty: string;
+	points: number;
 	help: {
 		description: string;
 		images: string[];
@@ -42,6 +43,7 @@ const levelsSlice = createSlice({
 			primaryColor: '#62374E',
 			secondaryColor: '#FDC57B',
 			image: Easy2,
+			points: 0,
 			diff: '',
 			difficulty: 'easy',
 			help: {
@@ -58,6 +60,7 @@ const levelsSlice = createSlice({
 			primaryColor: '#D25B70',
 			secondaryColor: '#F2E09F',
 			image: Medium2,
+			points: 0,
 			diff: '',
 			difficulty: 'medium',
 			help: {
@@ -73,6 +76,7 @@ const levelsSlice = createSlice({
 			accuracy: '0',
 			primaryColor: '#F5D6B4',
 			secondaryColor: '#D86F45',
+			points: 0,
 			image: Hard3,
 			diff: '',
 			difficulty: 'hard',

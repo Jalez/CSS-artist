@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './Diff.css';
+import { Buffer } from 'buffer';
 
 export const Diff = () => {
 	const { currentLevel } = useSelector((state: any) => state.currentLevel);
@@ -23,7 +24,9 @@ export const Diff = () => {
 			canvas.height = height;
 			const ctx = canvas.getContext('2d');
 			const imgData = ctx?.createImageData(width, height);
-			imgData?.data.set(level.diff);
+			const deserializedDiff = Buffer.from(level.diff, 'base64');
+
+			imgData?.data.set(deserializedDiff);
 			ctx?.putImageData(imgData!, 0, 0);
 			diff.appendChild(canvas);
 		}
