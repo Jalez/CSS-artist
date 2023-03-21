@@ -25,6 +25,7 @@ export const Frame = ({ newHtml, newCss }: FrameProps) => {
 	useEffect(() => {
 		const resendDataAfterMount = (event: MessageEvent) => {
 			if (event.data === 'mounted') {
+				console.log('called resendDataAfterMount');
 				// Send the new html and css to the iframe
 				iframeRef.current?.contentWindow?.postMessage(
 					{
@@ -84,28 +85,12 @@ export const Frame = ({ newHtml, newCss }: FrameProps) => {
 			}
 
 			const allImagesLoaded = async () => {
-				// create a canvas element
-				const canvas = document.createElement('canvas');
-				// set the width and height of the canvas
-				canvas.width = img2.width;
-				canvas.height = img2.height;
-				// get the context of the canvas
-				const ctx = canvas.getContext('2d');
-				// draw the image to the canvas
-				ctx?.drawImage(img2, 0, 0);
-				// Add the canvas to the DOM
 				// set the src of the image to the data url
-
 				const img1Data = (await getPixelData(img1)) as ImageData;
 				const img2Data = (await getPixelData(img2)) as ImageData;
 
 				// Create a diff image with the same dimensions as img1
 				const diff = Buffer.alloc(img2Data.data.length as number) as Buffer;
-				console.log(typeof diff);
-				console.log('diff: ', diff);
-				// Get the width and height of the images
-				// make sure both images have the same dimensions
-
 				const width = img1Data?.width;
 				const height = img1Data?.height || 0;
 				const returnValue = pixelmatch(
@@ -118,24 +103,6 @@ export const Frame = ({ newHtml, newCss }: FrameProps) => {
 						threshold: 0.1,
 					}
 				);
-				// Get the percentage of pixels that are different
-				const percentage = (returnValue / (width * height)) * 100;
-
-				// Create a new canvas element
-				const diffCanvas = document.createElement('canvas');
-				// Set the width and height of the canvas
-				diffCanvas.width = width;
-				diffCanvas.height = height;
-				// Get the 2D context of the canvas
-				const diffCtx = diffCanvas.getContext('2d');
-				// Create an ImageData object with the diff data
-				const diffImgData = diffCtx?.createImageData(width, height);
-				// Set the data of the ImageData object to the diff data
-				diffImgData?.data.set(diff);
-				// Draw the ImageData object to the canvas
-				diffCtx?.putImageData(diffImgData as ImageData, 0, 0);
-				// put the canvas in the DOM
-				// get the element with the id of diff and append the canvas to it
 				dispatch(
 					updateLevel({
 						id: 1,
@@ -163,6 +130,7 @@ export const Frame = ({ newHtml, newCss }: FrameProps) => {
 		// wait for the iframe to load
 
 		if (iframe) {
+			console.log('called useEffect at line 133');
 			// send a message to the iframe
 			iframe.contentWindow?.postMessage(
 				{
