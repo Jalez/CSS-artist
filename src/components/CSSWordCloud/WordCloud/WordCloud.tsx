@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import * as d3Cloud from 'd3-cloud';
 import * as d3 from 'd3';
 import './WordCloud.css';
+// include namespace for d3-cloud
+// import { d3Cloud } from 'd3-cloud';
 
 const loremIpsum = `Lorem ipsum
 `;
