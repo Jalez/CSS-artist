@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import { InfoBoard } from '../../InfoBoard/InfoBoard';
 import { InfoText } from '../../InfoBoard/InfoText';
+import { LevelData } from '../../InfoBoard/LevelData';
 import { Frame } from '../Frame';
 import { Model } from '../ModelBoard/Model/Model';
 import './Drawboard.css';
@@ -31,18 +32,18 @@ export const Drawboard = ({ htmlCode, cssCode }: DrawboardProps) => {
 	return (
 		<div className='board'>
 			<InfoBoard>
-				<InfoText reduxState={'completed'}>Completed</InfoText>
-				<InfoText reduxState={'accuracy'}>Accuracy</InfoText>
+				<InfoText text={'Points'}>
+					<LevelData reduxState='points' />
+					/
+					<LevelData reduxState='maxPoints' />
+				</InfoText>
+				<InfoText text={''}>
+					<LevelData reduxState='difficulty' />
+				</InfoText>
+				<InfoText text={'Accuracy: '}>
+					<LevelData reduxState='accuracy' />
+				</InfoText>
 			</InfoBoard>
-			{/* 
-box
-font size
-font family
-background color
-height
-width 
-
-*/}
 			<div
 				className='img-container'
 				style={{

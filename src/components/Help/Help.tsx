@@ -15,7 +15,9 @@ export default function Help() {
 
 	return (
 		<>
-			<NavButton clickHandler={handleOpen}>Help</NavButton>
+			<NavButton clickHandler={handleOpen} disabled={true}>
+				Help
+			</NavButton>
 
 			{/* <Modal
 				open={open}

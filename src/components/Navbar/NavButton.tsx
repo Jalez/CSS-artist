@@ -6,17 +6,23 @@ import { Button } from '@mui/material';
 interface NavButtonProps {
 	clickHandler: any;
 	children: any;
+	disabled?: boolean;
 }
 
-export const NavButton = ({ clickHandler, children }: NavButtonProps) => {
+export const NavButton = ({
+	clickHandler,
+	children,
+	disabled,
+}: NavButtonProps) => {
 	return (
 		<Button
 			onClick={clickHandler}
 			style={{
 				fontFamily: 'Kontakt',
 				flex: 1,
-				color: 'black',
-			}}>
+				color: disabled ? 'grey' : 'black',
+			}}
+			disabled={disabled}>
 			<span
 				style={{
 					backdropFilter: 'blur(1px)',

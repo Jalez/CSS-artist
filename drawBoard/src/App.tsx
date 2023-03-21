@@ -60,12 +60,12 @@ window.addEventListener('message', (event) => {
 
 		if (board) {
 			html2canvas(board).then(function (canvas) {
-				console.log('canvas', canvas);
+				// console.log('canvas', canvas);
 				// get height and width of the canvas
-				const height = canvas.height;
-				const width = canvas.width;
-				console.log('height', height);
-				console.log('width', width);
+				// const height = canvas.height;
+				// const width = canvas.width;
+				// console.log('height', height);
+				// console.log('width', width);
 
 				const dataURL = canvas.toDataURL();
 

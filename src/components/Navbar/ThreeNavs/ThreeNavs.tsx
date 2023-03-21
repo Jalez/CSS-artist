@@ -9,25 +9,15 @@ import NavMenu from '../NavMenu';
 import { sendScoreToParentFrame } from '../../../store/actions/score.actions';
 
 import './ThreeNavs.css';
-import { useAppDispatch } from '../../../store/hooks/hooks';
-
-const levelsAndIds = [
-	{
-		id: 1,
-		name: 'Easy',
-	},
-	{
-		id: 2,
-		name: 'Medium',
-	},
-	{
-		id: 3,
-		name: 'Hard',
-	},
-];
+import { useAppDispatch, useAppSelector } from '../../../store/hooks/hooks';
 
 export const ThreeNavs = () => {
 	const dispatch = useAppDispatch();
+	const levels = useAppSelector((state) => state.levels);
+
+	// get difficulties in an array from the levels
+	const difficulties = levels.map((level) => level.difficulty);
+
 	const beginEvaluation = () => {
 		// send a message to the iframe
 		const iframe = document.querySelector('iframe');
@@ -39,7 +29,8 @@ export const ThreeNavs = () => {
 	};
 
 	const levelChanger = (pickedLevel: any) => {
-		const level = levelsAndIds.find((level) => level.name === pickedLevel);
+		// get the level object from the levels array
+		const level = levels.find((level) => level.difficulty === pickedLevel);
 		if (level) {
 			// dispatch the levels id to the store as the current level
 			dispatch(setCurrentLevel(level.id));
@@ -50,9 +41,7 @@ export const ThreeNavs = () => {
 		<div id='three-navs'>
 			<HelpModal />
 			<NavButton clickHandler={beginEvaluation}>Evaluate</NavButton>
-			<NavMenu
-				clickHandler={levelChanger}
-				menuItems={['Easy', 'Medium', 'Hard']}>
+			<NavMenu clickHandler={levelChanger} menuItems={difficulties}>
 				Levels
 			</NavMenu>
 		</div>

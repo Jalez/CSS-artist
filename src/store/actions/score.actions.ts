@@ -1,14 +1,8 @@
 /** @format */
 
 import { scoreTypes } from '../constants/score.actions.js';
+import { updatePoints } from '../slices/score.slice.js';
 import { AppThunk } from '../store.js';
-
-const updatePoints = (points = 0) => {
-	return {
-		type: scoreTypes.updatePoints,
-		payload: points,
-	};
-};
 
 const updateMaxPoints = (maxPoints = 0) => {
 	return {
@@ -23,22 +17,14 @@ export const updatePointsThunk =
 	async (dispatch, getState) => {
 		{
 			// Get current level from store
-			const { currentLevel } = getState().currentLevel;
-			// Get all levels from store
 			const levels = getState().levels;
-			// Get current score from store
-			const score = getState().score;
+			// Loop through the levels and increment the points together as updatePoints
+			const updatedPoints = levels.reduce((acc, level) => {
+				// If the level is completed, add the points to the accumulator
+				acc += level.points;
+				return acc;
+			}, 0);
 
-			// Get current level from levels
-			const currentLevelData = levels[currentLevel - 1];
-			// max points of the current level is 5
-			const currentLevelMaxPoints = 5;
-			// Calculate points based on accuracy
-			const points = Math.floor(accuracy * currentLevelMaxPoints);
-			// Remove old points from score
-			const newScore = score.points - currentLevelData.points;
-			// Add new points to score
-			const updatedPoints = newScore + points;
 			// Dispatch the thunk action
 			dispatch(updatePoints(updatedPoints));
 			dispatch(sendScoreToParentFrame());

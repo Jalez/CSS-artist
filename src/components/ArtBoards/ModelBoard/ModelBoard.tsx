@@ -1,6 +1,6 @@
 /** @format */
 
-import { Button, FormControlLabel, Switch } from '@mui/material';
+import { Button, FormControlLabel, Switch, Typography } from '@mui/material';
 import { useState } from 'react';
 import { InfoBoard } from '../../InfoBoard/InfoBoard';
 import { InfoColor } from '../../InfoBoard/InfoColor';
@@ -25,14 +25,25 @@ export const ModelBoard = () => {
 				<FormControlLabel
 					control={
 						<Switch
-							style={{ color: 'white', fontSize: '1.5em', font: 'Kontakt' }}
 							defaultChecked
 							// fire when switch is clicked
 							onChange={() => setShowModel(!showModel)}
 						/>
 					}
-					style={{ color: 'white' }}
-					label={showModel ? 'Show Diff' : 'Show Model'}
+					style={{
+						userSelect: 'none',
+					}}
+					label={
+						<Typography
+							style={{
+								font: 'Kontakt',
+								// dont allow text selection
+							}}
+							variant='p'>
+							{showModel ? 'Model' : 'Diff'}
+						</Typography>
+					}
+					labelPlacement='start'
 				/>
 			</InfoBoard>
 			<div

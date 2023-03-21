@@ -2,7 +2,7 @@
 
 import { Button, Grid } from '@mui/material';
 import html2canvas from 'html2canvas';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import confetti from 'canvas-confetti';
 
 import './App.css';
@@ -13,26 +13,20 @@ import { Editors } from './components/Editors/Editors';
 import { ArtBoards } from './components/ArtBoards/ArtBoards';
 import { Footer } from './components/Footer/Footer';
 import { Title } from './components/Title/Title';
-
-const startingCss = `
-body {
-  margin: 0px;
-  background-color: #222;
-}
-div {
-  width: 100px;
-  height: 100px;
-  background-color: yellow;
-}
-`;
-
-const startingHtml = `
-<div></div>
-`;
+import { useAppDispatch, useAppSelector } from './store/hooks/hooks';
+import { updateCode } from './store/slices/levels.slice';
 
 function App() {
-	const [htmlCode, setHTMLCode] = useState<string>(startingHtml);
-	const [cssCode, setCSSCode] = useState<string>(startingCss);
+	const dispatch = useAppDispatch();
+	const { currentLevel } = useAppSelector((state) => state.currentLevel);
+	const code = useAppSelector((state) => state.levels[currentLevel - 1].code);
+	const [htmlCode, setHTMLCode] = useState<string>(code.html);
+	const [cssCode, setCSSCode] = useState<string>(code.css);
+
+	useEffect(() => {
+		setHTMLCode(code.html);
+		setCSSCode(code.css);
+	}, [code]);
 
 	const codeUpdater = (data: { html?: string; css?: string }) => {
 		if (data.html) {
@@ -41,6 +35,15 @@ function App() {
 		if (data.css) {
 			setCSSCode(data.css);
 		}
+		dispatch(
+			updateCode({
+				id: currentLevel,
+				code: {
+					html: data.html ? data.html : htmlCode,
+					css: data.css ? data.css : cssCode,
+				},
+			})
+		);
 	};
 
 	return (

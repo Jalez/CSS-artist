@@ -5,23 +5,19 @@ import { useSelector } from 'react-redux';
 // create prop interface
 interface NavTextProps {
 	children: any;
-	reduxState: any;
+	text: string;
 }
 
-export const InfoText = ({ children, reduxState }: NavTextProps) => {
-	// get redux state
-	const { currentLevel } = useSelector((state: any) => state.currentLevel);
-	const detail = useSelector(
-		(state: any) => state.levels[currentLevel - 1][reduxState]
-	);
-
+export const InfoText = ({ children, text }: NavTextProps) => {
 	return (
 		<>
 			<p
 				style={{
 					textAlign: 'center',
+					// dont allow selection
+					userSelect: 'none',
 				}}>
-				{children} : {detail}
+				{text} {children}
 			</p>
 		</>
 	);

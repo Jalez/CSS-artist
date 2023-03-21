@@ -13,9 +13,9 @@ interface ArtBoardsProps {
 
 export const ArtBoards = ({ htmlCode, cssCode }: ArtBoardsProps) => {
 	return (
-		<>
+		<div id='artBoard'>
 			<Drawboard htmlCode={htmlCode} cssCode={cssCode} />
 			<ModelBoard />
-		</>
+		</div>
 	);
 };
