@@ -34,12 +34,7 @@ export const ModelBoard = () => {
 						userSelect: 'none',
 					}}
 					label={
-						<Typography
-							style={{
-								font: 'Kontakt',
-								// dont allow text selection
-							}}
-							variant='p'>
+						<Typography variant='body1'>
 							{showModel ? 'Model' : 'Diff'}
 						</Typography>
 					}

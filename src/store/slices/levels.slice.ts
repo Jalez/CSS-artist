@@ -155,7 +155,7 @@ const levelsSlice = createSlice({
 				// Calculate the points based on the last 10 percent
 				const lastTenPercent = percentage - 90;
 				const lastTenPercentPercentage = lastTenPercent / 10;
-				level.points = Math.floor(lastTenPercentPercentage * level.maxPoints);
+				level.points = Math.ceil(lastTenPercentPercentage * level.maxPoints);
 				// set level completed to yes
 				level.completed = 'yes';
 			}
