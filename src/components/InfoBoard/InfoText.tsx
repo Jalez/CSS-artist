@@ -15,8 +15,6 @@ export const InfoText = ({ children, reduxState }: NavTextProps) => {
 		(state: any) => state.levels[currentLevel - 1][reduxState]
 	);
 
-	console.log('currentLevel: ', currentLevel);
-	console.log(detail);
 	return (
 		<>
 			<p
