@@ -48,7 +48,7 @@ function App() {
 			<Title />
 			<Navbar />
 			<div className='App'>
-				<CSSWordCloud />
+				{/* <CSSWordCloud /> */}
 				<ArtBoards cssCode={cssCode} htmlCode={htmlCode} />
 			</div>
 			<Editors
