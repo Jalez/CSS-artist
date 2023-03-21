@@ -12,8 +12,6 @@
   window.addEventListener('message', receiveMessage, false);
 
   function receiveMessage(event) {
-    console.log("Received message from regex frame:",
-      event.data)
     const points = event.data.points;
     document.querySelector('#points').value = points;
     const maxPoints = event.data.maxPoints;

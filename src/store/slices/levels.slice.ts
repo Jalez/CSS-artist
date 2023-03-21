@@ -63,7 +63,9 @@ const initialDefaults = {
 	diff: '',
 };
 // Get initial state from local storage
-let initialState: Level[] = JSON.parse(localStorage.getItem('levels') || '[]');
+let initialState: Level[] = JSON.parse(
+	localStorage.getItem('css-artist-1-levels') || '[]'
+);
 console.log('initialState', initialState);
 // if there is no initial state, set it to the default state
 if (initialState.length === 0) {
@@ -168,7 +170,7 @@ const levelsSlice = createSlice({
 			level.accuracy = percentage.toFixed(2);
 			level.diff = diff;
 			// update the level in local storage
-			localStorage.setItem('levels', JSON.stringify(state));
+			localStorage.setItem('css-artist-1-levels', JSON.stringify(state));
 		},
 		updateCode(state, action) {
 			const { id, code } = action.payload;
@@ -176,7 +178,7 @@ const levelsSlice = createSlice({
 			if (!level) return;
 			level.code = code;
 			// update the code for the level in local storage
-			localStorage.setItem('levels', JSON.stringify(state));
+			localStorage.setItem('css-artist-1-levels', JSON.stringify(state));
 		},
 	},
 });
