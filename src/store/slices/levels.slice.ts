@@ -3,24 +3,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // Get from assets
-import Easy1 from '../../assets/Easy1.png';
-import Easy2 from '../../assets/Easy2.png';
-import Medium2 from '../../assets/Medium2.png';
-import Hard3 from '../../assets/Hard3.png';
-import placeholder from '../../assets/Placeholder.svg';
-import button from '../../assets/button.png';
-import card from '../../assets/card.png';
-import cardWithImage from '../../assets/cardWithImage.png';
-import couple from '../../assets/PictureGallery/couple.jpg';
-import desert from '../../assets/PictureGallery/desert.jpg';
-import dog from '../../assets/PictureGallery/dog.jpg';
-import oldartist from '../../assets/PictureGallery/oldartist.jpg';
-import me from '../../assets/PictureGallery/me.jpg';
-import PictureGallery from '../../assets/PictureGallery.png';
 
 const url = import.meta.env.LOCAL_TESTING_URL;
 
 import confetti from 'canvas-confetti';
+import { PremadeLevels } from '../../assets/PremadeLevels';
 
 // Remove these static width and height values
 const width = 400;
@@ -61,34 +48,6 @@ interface Level {
 	solEvalUrl: string;
 }
 
-const initialHtml: string = `<div></div>`;
-const initialCss: string = `
-body {
-	margin: 0px;
-	background-color: #222;
-}
-div {
-	width: 100px;
-	height: 100px;
-	background-color: yellow;
-}`;
-const initialCode = {
-	html: initialHtml,
-	css: initialCss,
-};
-
-const initialDefaults = {
-	completed: 'no',
-	accuracy: '0',
-	code: initialCode,
-	points: 0,
-	maxPoints: 5,
-	diff: '',
-	drawingUrl: '',
-	solutionUrl: '',
-	drawnEvalUrl: '',
-	solEvalUrl: '',
-};
 // Get initial state from local storage
 let initialState: Level[] = JSON.parse(
 	localStorage.getItem('css-artist-1-levels') || '[]'
@@ -96,78 +55,7 @@ let initialState: Level[] = JSON.parse(
 // if there is no initial state, set it to the default state
 if (initialState.length === 0) {
 	console.log("There's no initial state, setting it to default state");
-	initialState = [
-		{
-			id: 1,
-			name: 'Level 1',
-
-			buildingBlocks: {
-				pictures: [],
-				colors: ['#1e88e5', '#f5f5f5'],
-			},
-			...initialDefaults,
-
-			image: button,
-			difficulty: 'button',
-			help: {
-				description: 'This is the first level',
-				images: [],
-				usefullCSSProperties: [],
-			},
-		},
-		{
-			id: 2,
-			name: 'Level 2',
-
-			buildingBlocks: {
-				pictures: [],
-				colors: ['#1e88e5', '#f5f5f5'],
-			},
-			...initialDefaults,
-
-			image: card,
-			difficulty: 'card',
-			help: {
-				description: 'This is the first level',
-				images: [],
-				usefullCSSProperties: [],
-			},
-		},
-		{
-			id: 3,
-			name: 'Level 3',
-
-			buildingBlocks: {
-				pictures: [placeholder],
-				colors: ['#1e88e5', '#f5f5f5'],
-			},
-			...initialDefaults,
-			image: cardWithImage,
-			difficulty: 'card with image',
-			help: {
-				description: 'This is the first level',
-				images: [],
-				usefullCSSProperties: [],
-			},
-		},
-		{
-			id: 4,
-			name: 'Level 4',
-			...initialDefaults,
-			image: PictureGallery,
-			buildingBlocks: {
-				pictures: [couple, desert, dog, oldartist, me],
-				colors: ['#62374E', '#FDC57B'],
-			},
-
-			difficulty: 'Picture Gallery',
-			help: {
-				description: 'This is the first level',
-				images: [],
-				usefullCSSProperties: [],
-			},
-		},
-	];
+	initialState = [...PremadeLevels];
 } else {
 	// if there is an initial state, set the code to the initial code
 	initialState.forEach((level) => {
