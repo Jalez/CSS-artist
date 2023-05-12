@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react';
 // import d3
-import * as d3Cloud_ from 'd3-cloud';
+import d3Cloud from 'd3-cloud';
 import * as d3 from 'd3';
 import './WordCloud.css';
-const d3Cloud = d3Cloud_ as any;
+// const as = d3Cloud_ as any;
 // include namespace for d3-cloud
-// import { d3Cloud } from 'd3-cloud';
+// import { d3 } from 'd3-cloud';
 
 const loremIpsum = `Lorem ipsum
 `;
@@ -22,7 +22,6 @@ export const WordCloud = ({ words = loremWords }: { words: string[] }) => {
 
 	useEffect(() => {
 		function draw(words: Array<String>) {
-			console.log('Gets to draw function');
 			d3.select('#cloud')
 				.append('svg')
 				.attr('width', layout.size()[0])
@@ -50,10 +49,10 @@ export const WordCloud = ({ words = loremWords }: { words: string[] }) => {
 		}
 		// create a d3 cloud layout
 		const layout = d3Cloud()
-			.size([1100, 1050])
+			.size([2000, 1050])
 			.words(
 				words.map(function (d: string) {
-					return { text: d, size: 15 + Math.random() * 20, test: 'haha' };
+					return { text: d, size: 15 + Math.random() * 30, test: 'haha' };
 				})
 			)
 			.padding(0)

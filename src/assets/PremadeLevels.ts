@@ -1,15 +1,15 @@
 /** @format */
 
-import placeholder from './Placeholder.svg';
-import button from './button.png';
-import card from './card.png';
-import cardWithImage from './cardWithImage.png';
+import placeholder from './ImageCard/cardWithImage/Placeholder.svg';
+import button from './ImageCard/button.png';
+import card from './ImageCard/card.png';
+import cardWithImage from './ImageCard/cardWithImage.png';
 import couple from './PictureGallery/couple.jpg';
 import desert from './PictureGallery/desert.jpg';
 import dog from './PictureGallery/dog.jpg';
 import oldartist from './PictureGallery/oldartist.jpg';
 import me from './PictureGallery/me.jpg';
-import PictureGallery from './PictureGallery.png';
+import PictureGallery from './PictureGallery/PictureGallery.png';
 
 const initialHtml: string = `<div></div>`;
 const initialCss: string = `
@@ -38,6 +38,11 @@ const initialDefaults = {
 	solutionUrl: '',
 	drawnEvalUrl: '',
 	solEvalUrl: '',
+	solution: {
+		html: '',
+		css: '',
+	},
+	confettiSprinkled: false,
 };
 
 interface Level {
@@ -53,10 +58,12 @@ interface Level {
 		html: string;
 		css: string;
 	};
-	// solution: {
-	// 	html: string;
-	// 	css: string;
-	// };
+	solution: {
+		html: string;
+		css: string;
+	};
+	confettiSprinkled: boolean;
+
 	image: string;
 	diff: string;
 	difficulty: string;
@@ -91,6 +98,7 @@ export const PremadeLevels = [
 			images: [],
 			usefullCSSProperties: [],
 		},
+		solutionUrl: button,
 	},
 	{
 		id: 2,
@@ -109,6 +117,7 @@ export const PremadeLevels = [
 			images: [],
 			usefullCSSProperties: [],
 		},
+		solutionUrl: card,
 	},
 	{
 		id: 3,
@@ -126,6 +135,7 @@ export const PremadeLevels = [
 			images: [],
 			usefullCSSProperties: [],
 		},
+		solutionUrl: cardWithImage,
 	},
 	{
 		id: 4,
@@ -142,5 +152,6 @@ export const PremadeLevels = [
 			images: [],
 			usefullCSSProperties: [],
 		},
+		solutionUrl: PictureGallery,
 	},
 ];

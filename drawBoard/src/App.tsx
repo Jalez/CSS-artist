@@ -9,26 +9,22 @@ function App() {
 	const boardRef = useRef<HTMLDivElement>(null);
 	const [html, setHtml] = useState<ReactElement>();
 	const [css, setCss] = useState<string>();
-
+	const [appendedCSS, setAppendedCSS] = useState<Boolean>(false);
+	const [stylesCorrect, setStylesCorrect] = useState<Boolean>(false);
+	const [urlName, setUrlName] = useState<string>();
 	useEffect(() => {
 		const handlePostMessage = (event: MessageEvent) => {
-			// if (event.data === 'reload') {
-			// 	window.location.reload();
-			// }
 			// If it countains new data, update the state
+			if (event.data.name) {
+				setUrlName(event.data.name);
+			}
 			if (event.data.html) {
 				// turn the string into a ReactNode element and set it as the state of the component
 				setHtml(<kbd dangerouslySetInnerHTML={{ __html: event.data.html }} />);
 			}
 			if (event.data.css) {
-				// remove the old style tag
-				const oldStyle = document.querySelector('style');
-				oldStyle?.remove();
-				// add the css as a style tag
-				const style = document.createElement('style');
-				style.innerHTML = event.data.css;
-				document.head.appendChild(style);
 				setCss(event.data.css);
+				setStylesCorrect(false);
 			}
 		};
 
@@ -41,19 +37,25 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		const board = document.getElementById('root');
+		const style = document.querySelector('style') as HTMLStyleElement;
+		style.innerHTML = css || '';
+		setStylesCorrect(true);
+		setAppendedCSS(true);
+	}, [stylesCorrect]);
 
-		if (board) {
+	useEffect(() => {
+		const board = document.getElementById('root');
+		if (stylesCorrect && board) {
 			domToPng(board).then((dataURL: string) => {
 				if (counter > 0) {
-					window.parent.postMessage({ dataURL, name: 'drawing' }, '*');
+					window.parent.postMessage({ dataURL, urlName }, '*');
 				}
 				counter++;
 				// window.parent.postMessage(dataURL, '*');
 			});
 			// }
 		}
-	}, [html, css]);
+	}, [html, stylesCorrect]);
 
 	return <>{html}</>;
 }

@@ -1,29 +1,14 @@
 /** @format */
 
-import { Button, Menu, MenuItem, MenuProps } from '@mui/material';
+import { Button, Menu, MenuProps } from '@mui/material';
 import { useAppSelector } from '../../store/hooks/hooks';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState, useEffect, useRef } from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { InfoPicture } from './InfoPicture';
 
 const StyledMenu = styled((props: MenuProps) => (
-	<Menu
-		elevation={0}
-		// anchorOrigin={{
-		// 	vertical: 'bottom',
-		// 	horizontal: 'right',
-		// }}
-		// transformOrigin={{
-		// 	vertical: 'top',
-		// 	horizontal: 'right',
-		// }}
-		// transformOrigin={{
-		// 	vertical: 'top',
-		// 	horizontal: 'left',
-		// }}
-		{...props}
-	/>
+	<Menu elevation={0} {...props} />
 ))(({ theme }) => ({
 	'& .MuiPaper-root': {
 		boxShadow:
@@ -91,11 +76,7 @@ export const InfoPictures = () => {
 					margin: 0,
 				}}
 				ref={buttonRef}
-				// onMouseEnter={handleClick}
-				// onMouseLeave={handleClose}
 				onMouseEnter={handleOpen}
-				// onMouseOver={handleOpen}
-				// onMouseLeave={handleClose}
 				aria-haspopup='true'
 				aria-expanded={open ? 'true' : undefined}
 				// variant='contained'
@@ -105,14 +86,8 @@ export const InfoPictures = () => {
 			</Button>
 			<StyledMenu
 				style={{
-					// display: 'flex',
-					// flexDirection: 'row',
-					// width: '400px',
-					// height: '300px',
-					// position: 'absolute',
 					margin: 0,
 					padding: 0,
-					// backgroundColor: 'red',
 				}}
 				sx={{
 					pointerEvents: 'none',
