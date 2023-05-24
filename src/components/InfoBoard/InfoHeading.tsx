@@ -31,7 +31,7 @@ export const InfoHeading = ({ children, variant }: InfoHeadingProps) => {
 					borderBottom: '3px solid rgb(17, 17, 17)',
 					borderLeft: '3px solid rgb(17, 17, 17)',
 					borderRight: '3px solid rgb(17, 17, 17)',
-					padding: '0.25em',
+					padding: '0.65em',
 					borderBottomLeftRadius: '0.3em',
 					borderBottomRightRadius: '0.3em',
 					zIndex: 2,

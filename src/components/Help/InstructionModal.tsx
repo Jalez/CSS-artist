@@ -64,11 +64,9 @@ const InstructionModal = ({
 	if (closed) return null;
 	return (
 		<Modal open={!closed} sx={modalStyle} onClose={handleClose}>
-			{/* <div style={modalStyle}> */}
 			<section id={id} className={`element ${maskClass}`}>
 				{children}
 			</section>
-			{/* </div> */}
 		</Modal>
 	);
 };

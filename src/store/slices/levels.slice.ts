@@ -63,7 +63,12 @@ div {
 	height: 50px;
 	background-color: ${primaryColor};
 }`;
-const initialCode = {
+interface InitialCode {
+	html: string;
+	css: string;
+}
+
+const initialCode: InitialCode = {
 	html: initialHtml,
 	css: initialCss,
 };
@@ -253,11 +258,20 @@ const levelsSlice = createSlice({
 			const { currentLevel, drawnImage, solutionImage } = action.payload;
 			loadAndMatch(currentLevel, drawnImage, solutionImage);
 		},
+		resetCode(state, action) {
+			const { id, lang } = action.payload;
+			const level = state.find((level) => level.id === id);
+			if (!level) return;
+
+			// Add type assertion to ensure correct indexing
+			const updatedCodeLanguage = lang as keyof InitialCode;
+			level.code[updatedCodeLanguage] = initialCode[updatedCodeLanguage];
+			console.log('RESET CODE: ', level.code[updatedCodeLanguage]);
+			storage.setItem(storage.key, JSON.stringify(state));
+		},
 		updateCode(state, action) {
 			const { id, code } = action.payload;
 			const level = state.find((level) => level.id === id);
-			// check that code doesnt contain level solution in it
-			//check if html or css length is over 100000, do nothing
 			if (
 				(code.html && code.html.length > maxCodeLength) ||
 				(code.css && code.css.length > maxCodeLength)
@@ -319,7 +333,12 @@ const levelsSlice = createSlice({
 	},
 });
 
-export const { updateCode, updateUrl, updateEvaluationUrl, evaluateLevel } =
-	levelsSlice.actions;
+export const {
+	updateCode,
+	updateUrl,
+	updateEvaluationUrl,
+	evaluateLevel,
+	resetCode,
+} = levelsSlice.actions;
 
 export default levelsSlice.reducer;

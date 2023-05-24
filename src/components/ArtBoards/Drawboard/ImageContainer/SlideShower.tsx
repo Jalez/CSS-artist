@@ -13,7 +13,7 @@ export const SlideShower = ({
 	slidingComponent,
 	staticComponent,
 }: ImageContainerProps) => {
-	const [sliderValue, setSliderValue] = useState(100);
+	const [sliderValue, setSliderValue] = useState(101);
 
 	const dragSlider = (e: any) => {
 		const slider = e.target;
@@ -24,7 +24,7 @@ export const SlideShower = ({
 	};
 
 	const resetSlider = () => {
-		setSliderValue(100);
+		setSliderValue(101);
 	};
 
 	const slidingStyle: CSSProperties = {

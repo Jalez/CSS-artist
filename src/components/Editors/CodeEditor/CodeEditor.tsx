@@ -22,6 +22,7 @@ import {
 } from '@uiw/react-codemirror';
 
 import './CodeEditor.css';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks/hooks';
 
 interface CodeEditorProps {
 	lang: any;
@@ -51,6 +52,9 @@ export default function CodeEditor({
 	locked = false,
 }: CodeEditorProps) {
 	const editorRef = useRef<ReactCodeMirrorRef>(null);
+	const currentLevel = useAppSelector(
+		(state) => state.currentLevel.currentLevel
+	);
 
 	const [code, setCode] = useState<string>(template);
 
@@ -84,13 +88,10 @@ export default function CodeEditor({
 		placeholder: `Write your ${title} here...`,
 		style: {
 			textAlign: 'left',
-			// maxWidth: '400%',
 			height: '100%',
 			overflow: 'auto',
-			// take border width into account
 			boxSizing: 'border-box',
 		},
-		// maxHeight: '2',
 		onChange: (value: string, viewUpdate: ViewUpdate) => {
 			if (locked) {
 				console.log('changed', value);
@@ -100,25 +101,18 @@ export default function CodeEditor({
 		},
 	};
 
+	const containerStyles = {
+		flex: '1 1 20px',
+		borderLeft: '3px solid #222',
+	};
+
 	return (
 		<div
 			className='codeEditor'
-			style={{
-				flex: '1 1 20px',
-				// maxWidth: '50%',
-				borderLeft: '3px solid #222',
-			}}
+			style={containerStyles}
 			title={
 				locked ? "You can't edit this code" : ' Click on the code to edit it'
 			}>
-			<Typography
-				variant='h3'
-				// Make it h2
-
-				color='primary'
-				id='title'>
-				{title} {locked ? '(Locked)' : ''}
-			</Typography>
 			<CodeMirror {...cmProps} />
 		</div>
 	);
